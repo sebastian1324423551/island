@@ -4,6 +4,7 @@ from django.conf import settings
 
 class Usuario(AbstractUser):
     fecha_registro = models.DateTimeField(auto_now_add=True)
+    dias_sobrevividos = models.IntegerField(default=0)
     
     def __str__(self):
         return self.username
