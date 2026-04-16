@@ -1,3 +1,4 @@
+# core/models.py
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
@@ -10,7 +11,11 @@ class Usuario(AbstractUser):
         return self.username
 
 class Estado(models.Model):
-    usuario = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='estado')
+    usuario = models.OneToOneField(
+        settings.AUTH_USER_MODEL,  # ← Usar settings.AUTH_USER_MODEL
+        on_delete=models.CASCADE,
+        related_name='estado'
+    )
     dia_actual = models.IntegerField(default=1)
     hambre = models.IntegerField(default=100)
     salud = models.IntegerField(default=100)

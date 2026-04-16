@@ -25,26 +25,26 @@ class GameEngine:
 
         if accion.tipo == 'explorar':
             estado.salud += impacto_real
-            eventos.append(f"🌴 Exploraste: {impacto_real:+d} de salud")
+            eventos.append(f" Exploraste: {impacto_real:+d} de salud")
 
             if random.random() < 0.25:
                 comida = random.randint(5, 20)
                 estado.hambre -= comida
-                eventos.append(f"🍎 Encontraste comida -{comida} de hambre")
+                eventos.append(f" Encontraste comida -{comida} de hambre")
         
         elif accion.tipo == 'recolectar':
             estado.hambre += impacto_real
-            eventos.append(f"🌿 Recolectaste: {impacto_real:+d} de hambre")
+            eventos.append(f" Recolectaste: {impacto_real:+d} de hambre")
         
         elif accion.tipo == 'construir':  # Corregido: "construir" no "contruir"
             estado.salud += impacto_real
-            eventos.append(f"🏠 Construiste un refugio: {impacto_real:+d} de salud")
+            eventos.append(f" Construiste un refugio: {impacto_real:+d} de salud")
         
         elif accion.tipo == 'descansar':
             estado.salud += impacto_real
             hambre_perdida = random.randint(5, 15)
             estado.hambre -= hambre_perdida
-            eventos.append(f"😴 Descansaste: {impacto_real:+d} salud, -{hambre_perdida} hambre")
+            eventos.append(f" Descansaste: {impacto_real:+d} salud, -{hambre_perdida} hambre")
         
         # EVENTOS ESPECIALES ALEATORIOS (30% de probabilidad)
         evento_especial = GameEngine._generar_evento_aleatorio()
@@ -64,11 +64,11 @@ class GameEngine:
         if estado.hambre <= 0:
             game_over = True
             estado.esta_vivo = False
-            mensaje_fin = "💀 ¡Moriste de hambre!"
+            mensaje_fin = " ¡Moriste de hambre!"
         elif estado.salud <= 0:
             game_over = True
             estado.esta_vivo = False
-            mensaje_fin = "💀 ¡Moriste por las condiciones de la isla!"
+            mensaje_fin = " ¡Moriste por las condiciones de la isla!"
         
         # AVANZAR DÍA (si sobrevive)
         if not game_over:
